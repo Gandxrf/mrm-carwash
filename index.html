@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MRM Car Wash — San Juan, Puerto Rico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-100: #f2f2f2;
+    --gray-200: #e0e0e0;
+    --gray-400: #aaaaaa;
+    --gray-600: #666666;
+    --gray-800: #2a2a2a;
+    --stripe-w: 8px;
+    --font-display: 'Black Han Sans', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+    --font-cond: 'Barlow Condensed', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    border-bottom: 3px solid var(--white);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    margin-top: -2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--white);
+    color: var(--black) !important;
+    padding: 8px 20px;
+    font-size: 12px !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .nav-cta:hover { background: var(--gray-200) !important; color: var(--black) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    margin-top: 64px;
+    min-height: calc(100vh - 64px);
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: var(--white);
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 0.95;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 32px;
+  }
+
+  .hero-headline em {
+    font-style: normal;
+    display: block;
+    -webkit-text-stroke: 2px var(--white);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-family: var(--font-cond);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--gray-400);
+    line-height: 1.6;
+    max-width: 360px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--white);
+    color: var(--black);
+    padding: 16px 32px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gray-200); }
+
+  .btn-outline {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--white);
+    padding: 16px 32px;
+    text-decoration: none;
+    border: 2px solid var(--gray-600);
+    cursor: pointer;
+    transition: border-color 0.15s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--white); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--gray-800);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--gray-600);
+  }
+
+  .hero-img-placeholder svg { opacity: 0.3; }
+
+  .hero-img-placeholder p {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.4;
+  }
+
+  /* diagonal cut */
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -60px;
+    width: 80px;
+    height: 100%;
+    background: var(--black);
+    transform: skewX(-4deg);
+    z-index: 1;
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    gap: 48px;
+    z-index: 2;
+  }
+
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-top: 4px;
+  }
+
+  /* ── SECTION SHARED ── */
+  .section {
+    padding: 100px 80px;
+  }
+
+  .section-alt {
+    background: var(--gray-100);
+  }
+
+  .section-dark {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 60px;
+    gap: 24px;
+  }
+
+  .section-tag {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4vw, 56px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── SERVICIOS ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 2px solid var(--black);
+  }
+
+  .service-card {
+    padding: 40px 32px;
+    border-right: 2px solid var(--black);
+    position: relative;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .service-card:last-child { border-right: none; }
+
+  .service-card:hover { background: var(--black); }
+  .service-card:hover .service-name { color: var(--white); }
+  .service-card:hover .service-desc { color: var(--gray-400); }
+  .service-card:hover .service-icon { border-color: var(--gray-600); color: var(--gray-400); }
+  .service-card:hover .service-num { color: var(--gray-800); }
+
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--gray-200);
+    line-height: 1;
+    margin-bottom: 24px;
+    transition: color 0.2s;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .service-icon svg { width: 24px; height: 24px; }
+
+  .service-name {
+    font-family: var(--font-cond);
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .service-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    transition: color 0.2s;
+  }
+
+  /* ── HORARIOS ── */
+  .schedule-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .schedule-list {
+    list-style: none;
+  }
+
+  .schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .schedule-item:first-child { border-top: 1px solid var(--gray-800); }
+
+  .schedule-index {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    width: 24px;
+    flex-shrink: 0;
+  }
+
+  .schedule-time {
+    font-family: var(--font-display);
+    font-size: 40px;
+    color: var(--white);
+    line-height: 1;
+    flex: 1;
+  }
+
+  .schedule-period {
+    font-family: var(--font-cond);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    align-self: flex-end;
+    padding-bottom: 6px;
+  }
+
+  .schedule-status {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--gray-600);
+    color: var(--gray-400);
+  }
+
+  .schedule-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .schedule-cta-box {
+    border: 2px solid var(--white);
+    padding: 40px;
+  }
+
+  .schedule-cta-box p {
+    font-family: var(--font-cond);
+    font-size: 14px;
+    color: var(--gray-400);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .schedule-phone {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 24px;
+    transition: color 0.15s;
+  }
+
+  .schedule-phone:hover { color: var(--gray-200); }
+
+  .schedule-note {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    color: var(--gray-600);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .schedule-note::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gray-600);
+  }
+
+  /* ── GALERÍA ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 300px 300px;
+    gap: 4px;
+  }
+
+  .gallery-item {
+    background: var(--gray-200);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .gallery-item.tall {
+    grid-row: span 2;
+  }
+
+  .gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--gray-200);
+  }
+
+  .gallery-placeholder svg { color: var(--gray-400); }
+
+  .gallery-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--black);
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gallery-label-text {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .gallery-badge {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-800);
+    padding: 3px 8px;
+  }
+
+  /* ── TRUST BAR ── */
+  .trust-bar {
+    padding: 40px 80px;
+    background: var(--black);
+    border-top: 2px solid var(--gray-800);
+    border-bottom: 2px solid var(--gray-800);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 64px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .trust-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .trust-text-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+
+  .trust-sep {
+    width: 1px;
+    height: 40px;
+    background: var(--gray-800);
+  }
+
+  /* ── RESERVA / CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 500px;
+  }
+
+  .contact-left {
+    background: var(--black);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .contact-right {
+    background: var(--gray-100);
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-headline {
+    font-family: var(--font-display);
+    font-size: 52px;
+    color: var(--white);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .contact-sub {
+    font-family: var(--font-cond);
+    font-size: 15px;
+    color: var(--gray-400);
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .contact-phone-big {
+    font-family: var(--font-display);
+    font-size: 44px;
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .contact-phone-big:hover { color: var(--gray-200); }
+
+  .contact-phone-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+  }
+
+  .contact-location {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-location::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gray-600);
+    flex-shrink: 0;
+  }
+
+  /* Booking placeholder form */
+  .booking-notice {
+    background: var(--white);
+    border: 2px solid var(--gray-200);
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+
+  .booking-notice-tag {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 12px;
+  }
+
+  .booking-notice-title {
+    font-family: var(--font-cond);
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .booking-notice-text {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.6;
+  }
+
+  .field-group { margin-bottom: 16px; }
+
+  .field-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .field-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .field-input:focus { border-color: var(--black); }
+  .field-input:disabled { background: var(--gray-100); color: var(--gray-400); cursor: not-allowed; }
+
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 2px solid var(--gray-800);
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-logo span {
+    display: block;
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gray-600);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gray-800);
+    text-transform: uppercase;
+  }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 200;
+    width: 56px;
+    height: 56px;
+    background: var(--black);
+    border: 2px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.15s;
+    box-shadow: 4px 4px 0 var(--gray-600);
+  }
+
+  .whatsapp-float:hover { background: var(--gray-800); }
+
+  .whatsapp-float svg { width: 26px; height: 26px; color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+    .hero-stats { left: 24px; }
+    .section { padding: 60px 24px; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .service-card { border-bottom: 2px solid var(--black); }
+    .schedule-container { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item.tall { grid-row: span 1; }
+    .trust-bar { padding: 32px 24px; gap: 24px; flex-wrap: wrap; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-left { padding: 60px 24px; }
+    .contact-right { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 40px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .whatsapp-float { bottom: 20px; right: 20px; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MRM<span>Car Wash</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#reservar" class="nav-cta">Reservar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">San Juan, Puerto Rico</p>
+    <h1 class="hero-headline">
+      No es cantidad,<br>
+      <em>es calidad.</em>
+    </h1>
+    <p class="hero-sub">Lavado premium para tu vehículo. Productos de alta calidad, atención al detalle y cinco turnos disponibles al día.</p>
+    <div class="hero-actions">
+      <a href="#reservar" class="btn-primary">Agenda tu cita</a>
+      <a href="#servicios" class="btn-outline">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-placeholder">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="1" y="3" width="22" height="13" rx="2"/>
+        <path d="M1 9h22"/>
+        <path d="M7 21h10"/>
+        <path d="M9 17v4M15 17v4"/>
+        <path d="M5 9V7a2 2 0 012-2h10a2 2 0 012 2v2"/>
+      </svg>
+      <p>Foto del vehículo</p>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">5</div>
+      <div class="hero-stat-label">Turnos al día</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">4</div>
+      <div class="hero-stat-label">Servicios premium</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">100%</div>
+      <div class="hero-stat-label">Calidad garantizada</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div><div class="trust-text-label">Confianza</div></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    </div>
+    <div><div class="trust-text-label">Puntualidad</div></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    </div>
+    <div><div class="trust-text-label">Calidad</div></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <div class="trust-icon">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    </div>
+    <div><div class="trust-text-label">Área Metro</div></div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="section" id="servicios">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-tag">Lo que hacemos</div>
+      <h2 class="section-title">Servicios<br>Premium</h2>
+    </div>
+    <p style="font-family: var(--font-cond); font-size: 15px; color: var(--gray-600); max-width: 320px; line-height: 1.6; text-align: right;">Cada servicio está diseñado para devolverle a tu vehículo el brillo que merece.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16.5C5 16.5 3 15 3 12.5S5 8 7 8h10c2 0 4 1.5 4 4.5S19 16.5 17 16.5H7z"/><path d="M7 16.5v2m10-2v2"/><path d="M10 8V6m4 2V6"/></svg>
+      </div>
+      <div class="service-name">Lavado Exterior</div>
+      <div class="service-desc">Brillo y protección de la carrocería con productos de alta calidad.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="service-name">Limpieza Interior</div>
+      <div class="service-desc">Limpieza detallada de superficies, asientos y paneles interiores.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12m0 0L8 8m4 4l4-4"/><circle cx="12" cy="5" r="3"/></svg>
+      </div>
+      <div class="service-name">Aspirado Profundo</div>
+      <div class="service-desc">Eliminación de polvo, arena y residuos de todas las superficies internas.</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+      </div>
+      <div class="service-name">Productos Premium</div>
+      <div class="service-desc">Solo utilizamos productos certificados de alta calidad para proteger tu inversión.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="section section-dark" id="horarios">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-tag" style="color: var(--gray-600);">Disponibilidad</div>
+      <h2 class="section-title">Horarios</h2>
+    </div>
+  </div>
+  <div class="schedule-container">
+    <ul class="schedule-list reveal">
+      <li class="schedule-item">
+        <span class="schedule-index">01</span>
+        <span class="schedule-time">9:30</span>
+        <span class="schedule-period">AM</span>
+        <span class="schedule-status">Disponible</span>
+      </li>
+      <li class="schedule-item">
+        <span class="schedule-index">02</span>
+        <span class="schedule-time">11:30</span>
+        <span class="schedule-period">AM</span>
+        <span class="schedule-status">Disponible</span>
+      </li>
+      <li class="schedule-item">
+        <span class="schedule-index">03</span>
+        <span class="schedule-time">1:30</span>
+        <span class="schedule-period">PM</span>
+        <span class="schedule-status">Disponible</span>
+      </li>
+      <li class="schedule-item">
+        <span class="schedule-index">04</span>
+        <span class="schedule-time">3:30</span>
+        <span class="schedule-period">PM</span>
+        <span class="schedule-status">Disponible</span>
+      </li>
+      <li class="schedule-item">
+        <span class="schedule-index">05</span>
+        <span class="schedule-time">5:30</span>
+        <span class="schedule-period">PM</span>
+        <span class="schedule-status">Disponible</span>
+      </li>
+    </ul>
+    <div class="schedule-right reveal">
+      <div class="schedule-cta-box">
+        <p>Reserva ahora</p>
+        <a href="tel:9394077407" class="schedule-phone">939 407 7407</a>
+        <div class="schedule-note">Espacios limitados por turno</div>
+      </div>
+      <p style="font-family: var(--font-cond); font-size: 13px; color: var(--gray-600); line-height: 1.8; letter-spacing: 0.05em;">
+        Los horarios muestran disponibilidad en tiempo real. Próximamente podrás reservar tu espacio directamente desde esta página.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="section section-alt" id="galeria">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-tag">Nuestro trabajo</div>
+      <h2 class="section-title">Antes<br>& Después</h2>
+    </div>
+    <p style="font-family: var(--font-cond); font-size: 15px; color: var(--gray-600); max-width: 280px; line-height: 1.6; text-align: right;">Los resultados hablan solos. Cada vehículo sale como nuevo.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item tall">
+      <div class="gallery-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-label">
+        <span class="gallery-label-text">Exterior</span>
+        <span class="gallery-badge">Antes / Después</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-label">
+        <span class="gallery-label-text">Interior</span>
+        <span class="gallery-badge">Antes</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-label">
+        <span class="gallery-label-text">Interior</span>
+        <span class="gallery-badge">Después</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-label">
+        <span class="gallery-label-text">Detalles</span>
+        <span class="gallery-badge">Llantas</span>
+      </div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      </div>
+      <div class="gallery-label">
+        <span class="gallery-label-text">Detalles</span>
+        <span class="gallery-badge">Acabados</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAR / CONTACT -->
+<div class="contact-grid" id="reservar">
+  <div class="contact-left">
+    <div>
+      <div class="section-tag" style="color: var(--gray-600); margin-bottom: 20px;">Contáctanos</div>
+      <h2 class="contact-headline">Tu auto<br>lo merece.</h2>
+      <p class="contact-sub">Espacios limitados. Agenda con tiempo y garantiza tu turno.</p>
+    </div>
+    <div>
+      <div class="contact-phone-label">Llámanos o escríbenos</div>
+      <a href="tel:9394077407" class="contact-phone-big">939 407 7407</a>
+      <div class="contact-location">San Juan, Puerto Rico y Área Metro</div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <div class="booking-notice">
+      <div class="booking-notice-tag">Próximamente</div>
+      <div class="booking-notice-title">Reserva en línea</div>
+      <div class="booking-notice-text">Pronto podrás seleccionar tu turno, elegir el servicio y confirmar tu cita directamente desde aquí. Por ahora, contáctanos al número de arriba.</div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">Nombre</label>
+        <input class="field-input" type="text" placeholder="Tu nombre" disabled>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Teléfono</label>
+        <input class="field-input" type="tel" placeholder="787 000 0000" disabled>
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field-group">
+        <label class="field-label">Servicio</label>
+        <input class="field-input" type="text" placeholder="Lavado exterior…" disabled>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Turno preferido</label>
+        <input class="field-input" type="text" placeholder="9:30 AM" disabled>
+      </div>
+    </div>
+    <button class="btn-primary" style="width:100%; opacity:0.4; cursor:not-allowed;" disabled>Reservar cita — Próximamente</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MRM<span>Car Wash — San Juan, PR</span></div>
+  <ul class="footer-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#horarios">Horarios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="tel:9394077407">939 407 7407</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 MRM Car Wash</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/19394077407" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
